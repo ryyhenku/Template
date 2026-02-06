@@ -26,7 +26,7 @@ set(PATH_WORKSPACE_ROOT ${CMAKE_CURRENT_LIST_DIR}/../../)
 include(${PATH_WORKSPACE_ROOT}/arch/arm/arm-v7m/cortex-m4/cortex-m4.cmake)
 
 # 设置工程输出路径（必须在 project() 之前设置）
-set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_LIST_DIR}/build)
+set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_LIST_DIR}/build/app)
 
 # 设置当前的工程名称
 project(hello  
