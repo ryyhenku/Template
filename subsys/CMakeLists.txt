@@ -6,5 +6,5 @@ set_property(GLOBAL PROPERTY Subsys_Sources
 )
 set_property(GLOBAL PROPERTY Subsys_Includes
     ${PATH_WORKSPACE_ROOT}/subsys/uart_hal/
-    ${PATH_WORKSPACE_ROOT}/subsys/uart_spi/
+    ${PATH_WORKSPACE_ROOT}/subsys/spi_hal/
 )

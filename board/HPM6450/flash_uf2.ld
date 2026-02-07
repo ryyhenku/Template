@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-ENTRY(_start)
+ENTRY(_asm_start)
 
 STACK_SIZE = _stack_size;
 HEAP_SIZE = _heap_size;

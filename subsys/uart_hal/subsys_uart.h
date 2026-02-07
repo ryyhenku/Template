@@ -1,7 +1,7 @@
 #ifndef __SUBSYS_UART_H__
 #define __SUBSYS_UART_H__
-#include "stdio.h"
-
+#include <stdio.h>
+#include <string.h>
 typedef enum
 {
     Data_Bits_5 = 0,

@@ -1,8 +1,8 @@
 #ifndef __SUBSYS_SPI_H__
 #define __SUBSYS_SPI_H__
 
-#include "stdio.h"
-
+#include <stdio.h>
+#include <string.h>
 /* 每个平台需要实现这个结构 */
 typedef struct
 {

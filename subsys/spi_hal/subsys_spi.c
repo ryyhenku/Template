@@ -1,7 +1,7 @@
 #include "subsys_spi.h"
 
 static spi_ops_t* __spi_buses[8];
-static uint8_t __spi_bus_count = 0;
+static uint8_t __spi_bus_count;
 
 spi_ops_t* spi_bus_ops_get_by_name(char *name)
 {
@@ -20,7 +20,7 @@ void spi_bus_register(spi_ops_t *spi_bus)
 {
     if (__spi_bus_count < 8) {
         __spi_buses[__spi_bus_count] = spi_bus;
-        __spi_bus_count = __spi_bus_count ++;
+        __spi_bus_count = __spi_bus_count + 1;
     }
 
 }

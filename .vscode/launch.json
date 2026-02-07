@@ -1,0 +1,27 @@
+
+{
+    "configurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/application.elf",
+            "name": "Debug with JLink",
+            "interface": "jtag",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device":"HPM6450xVMx",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "external",
+            "gdbTarget": "127.0.0.1:2331",
+            // "gdbPath": "./tools/riscv/tool-chain/bin/riscv32-unknown-elf-gdb.exe",
+             "gdbPath": "./tools/arm/tool-chain/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb.exe",
+            "serverpath": "C:/Program Files/SEGGER/JLink_V824/JLinkGDBServerCL.exe",
+            "overrideLaunchCommands": [
+                // 加载 GDB 脚本
+                //"source C:/Users/11958/Desktop/Aether/board/HPM6450/gdb/ram.gdb",
+                "load"
+            ]
+            
+        }
+    ]
+}

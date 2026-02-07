@@ -8,10 +8,10 @@
 
     .section .start, "ax"
 
-    .global _start
-    .type _start,@function
+    .global _asm_start
+    .type _asm_start,@function
 
-_start:
+_asm_start:
     /* Initialize global pointer */
     .option push
     .option norelax
