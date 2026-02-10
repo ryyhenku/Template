@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-static uart_ops_t* __debug_serial = NULL;
+uart_ops_t* __debug_serial = NULL;
 
 int init_debug_serial(
     char * debug_serial_name,

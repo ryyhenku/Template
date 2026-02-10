@@ -16,7 +16,7 @@ set(CMAKE_COLOR_DIAGNOSTICS false)
 set(PATH_WORKSPACE_ROOT ${CMAKE_CURRENT_LIST_DIR})
 
 #指定代码入口 默认main
-set(Entry "main" CACHE STRING "Entry")
+set(Entry "Reset_Handler" CACHE STRING "Entry")
 
 #指定arch board
 set(Arch "riscv" CACHE STRING "Target Arch")
@@ -53,7 +53,7 @@ get_property(Component_Sources GLOBAL PROPERTY Component_Sources)
 get_property(Driver_Sources GLOBAL PROPERTY Driver_Sources)
 get_property(Subsys_Sources GLOBAL PROPERTY Subsys_Sources)
 get_property(App_Sources GLOBAL PROPERTY App_Sources)
-
+get_property(Common_Driver_Sources  GLOBAL PROPERTY Common_Driver_Sources)
 
 get_cmake_property(vars GLOBAL PROPERTIES)
 
@@ -63,7 +63,7 @@ get_property(Component_Includes GLOBAL PROPERTY Component_Includes)
 get_property(Driver_Includes GLOBAL PROPERTY Driver_Includes)
 get_property(Subsys_Includes GLOBAL PROPERTY Subsys_Includes)
 get_property(App_Includes GLOBAL PROPERTY App_Includes)
-
+get_property(Common_Driver_Includes GLOBAL PROPERTY Common_Driver_Includes)
 get_property(LINKER_SCRIPT GLOBAL PROPERTY LINKER_SCRIPT)
 get_property(Startup_ASM GLOBAL PROPERTY Startup_ASM)
 
@@ -91,7 +91,8 @@ set(Build_All_SRC
     ${Arch_Sources}
     ${Board_Sources}
     ${Component_Sources} 
-    ${Driver_Sources}   
+    ${Driver_Sources}
+    ${Common_Driver_Sources}   
     ${Subsys_Sources}  
     ${App_Sources}    
 )
@@ -99,6 +100,7 @@ include_directories(
     ${Arch_Includes}
     ${Board_Includes}
     ${Component_Includes} 
+    ${Common_Driver_Includes}
     ${Driver_Includes}   
     ${Subsys_Includes}  
     ${App_Includes}    
@@ -113,7 +115,7 @@ SET(CFCOMMON
 
 SET(CMAKE_C_FLAGS "-O0 -g  ${CFCOMMON}")
 SET(CMAKE_CXX_FLAGS "-O0 -g  ${CFCOMMON} -fno-exceptions")
-SET(CMAKE_ASM_FLAGS "-O0 -g ${MCPU_FLAGS}")
+SET(CMAKE_ASM_FLAGS "-O0 -g ${CFCOMMON}")
 
 
 add_executable(${PROJECT_NAME}.elf ${Build_All_SRC} )
@@ -121,8 +123,7 @@ add_executable(${PROJECT_NAME}.elf ${Build_All_SRC} )
 
 target_link_options(${PROJECT_NAME}.elf PRIVATE
     -T${LINKER_SCRIPT}    
-    -Wl,--entry=${Entry}
-    -Wl,--gc-sections         
+    -Wl,--entry=${Entry}        
     -Wl,-Map=${OUTPUT_DIR}/${PROJECT_NAME}.map  
 )
 

@@ -8,6 +8,8 @@ void board_bsp_devs_register()
 {
     spi1_dev_register(); /* 注册SPI1 */
     spi2_dev_register();
+    uart1_dev_register();
+    timer2_period_dev_register();
 }
 
 

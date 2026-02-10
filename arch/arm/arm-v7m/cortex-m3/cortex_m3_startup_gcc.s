@@ -7,85 +7,82 @@
 
 .section .isr_vector,"a",%progbits
 isr_vector:
-    .word __main_stack_top
-    .word  Reset_Handler                /*复位*/
-    .word  NMI_Handler                 /* NMI 处理函数 */
-    .word  HardFault_Handler           /* 硬件错误处理函数 */
-    .word  MemManage_Handler           /* 内存管理错误处理函数 */
-    .word  BusFault_Handler            /* 总线错误处理函数 */
-    .word  UsageFault_Handler          /* 使用错误处理函数 */
-    .word  0                           /* 保留 */
-    .word  0                           /* 保留 */
-    .word  0                           /* 保留 */
-    .word  0                           /* 保留 */
-    .word  vPortSVCHandler                 /* SVCall 处理函数 */
-    .word  DebugMon_Handler            /* 调试监控处理函数 */
-    .word  0                           /* 保留 */
-    .word  xPortPendSVHandler              /* PendSV 处理函数 */
-    .word  xPortSysTickHandler             /* SysTick 处理函数 */
-
-    /* STM32F407外部中断 (IRQ0 - IRQ81) */
-    .word  WWDG_IRQHandler                 /* 0x040 窗口看门狗中断 */
-    .word  PVD_IRQHandler                  /* 0x044 PVD通过EXTI检测中断 */
-    .word  TAMP_STAMP_IRQHandler           /* 0x048 Tamper和时间戳中断 */
-    .word  RTC_WKUP_IRQHandler             /* 0x04C RTC唤醒中断 */
-    .word  FLASH_IRQHandler                /* 0x050 Flash全局中断 */
-    .word  RCC_IRQHandler                  /* 0x054 RCC全局中断 */
-    .word  EXTI0_IRQHandler                /* 0x058 EXTI Line0中断 */
-    .word  EXTI1_IRQHandler                /* 0x05C EXTI Line1中断 */
-    .word  EXTI2_IRQHandler                /* 0x060 EXTI Line2中断 */
-    .word  EXTI3_IRQHandler                /* 0x064 EXTI Line3中断 */
-    .word  EXTI4_IRQHandler                /* 0x068 EXTI Line4中断 */
-    .word  DMA1_Stream0_IRQHandler         /* 0x06C DMA1 Stream0全局中断 */
-    .word  DMA1_Stream1_IRQHandler         /* 0x070 DMA1 Stream1全局中断 */
-    .word  DMA1_Stream2_IRQHandler         /* 0x074 DMA1 Stream2全局中断 */
-    .word  DMA1_Stream3_IRQHandler         /* 0x078 DMA1 Stream3全局中断 */
-    .word  DMA1_Stream4_IRQHandler         /* 0x07C DMA1 Stream4全局中断 */
-    .word  DMA1_Stream5_IRQHandler         /* 0x080 DMA1 Stream5全局中断 */
-    .word  DMA1_Stream6_IRQHandler         /* 0x084 DMA1 Stream6全局中断 */
-    .word  ADC_IRQHandler                  /* 0x088 ADC1/2/3全局中断 */
-    .word  CAN1_TX_IRQHandler              /* 0x08C CAN1 TX中断 */
-    .word  CAN1_RX0_IRQHandler             /* 0x090 CAN1 RX0中断 */
-    .word  CAN1_RX1_IRQHandler             /* 0x094 CAN1 RX1中断 */
-    .word  CAN1_SCE_IRQHandler             /* 0x098 CAN1 SCE中断 */
-    .word  EXTI9_5_IRQHandler              /* 0x09C EXTI Line[9:5]中断 */
-    .word  TIM1_BRK_TIM9_IRQHandler        /* 0x0A0 TIM1 Break和TIM9全局中断 */
-    .word  TIM1_UP_TIM10_IRQHandler        /* 0x0A4 TIM1 Update和TIM10全局中断 */
-    .word  TIM1_TRG_COM_TIM11_IRQHandler   /* 0x0A8 TIM1 Trigger和TIM11全局中断 */
-    .word  TIM1_CC_IRQHandler              /* 0x0AC TIM1捕获比较中断 */
-    .word  TIM2_IRQHandler                 /* 0x0B0 TIM2全局中断 */
-    .word  TIM3_IRQHandler                 /* 0x0B4 TIM3全局中断 */
-    .word  TIM4_IRQHandler                 /* 0x0B8 TIM4全局中断 */
-    .word  I2C1_EV_IRQHandler              /* 0x0BC I2C1事件中断 */
-    .word  I2C1_ER_IRQHandler              /* 0x0C0 I2C1错误中断 */
-    .word  I2C2_EV_IRQHandler              /* 0x0C4 I2C2事件中断 */
-    .word  I2C2_ER_IRQHandler              /* 0x0C8 I2C2错误中断 */
-    .word  SPI1_IRQHandler                 /* 0x0CC SPI1全局中断 */
-    .word  SPI2_IRQHandler                 /* 0x0D0 SPI2全局中断 */
-    .word  USART1_IRQHandler               /* 0x0D4 USART1全局中断 */
-    .word  USART2_IRQHandler               /* 0x0D8 USART2全局中断 */
-    .word  USART3_IRQHandler               /* 0x0DC USART3全局中断 */
-    .word  EXTI15_10_IRQHandler            /* 0x0E0 EXTI Line[15:10]中断 */
-    .word  RTC_Alarm_IRQHandler            /* 0x0E4 RTC闹钟通过EXTI中断 */
-    .word  OTG_FS_WKUP_IRQHandler          /* 0x0E8 USB OTG FS唤醒中断 */
-    .word  TIM8_BRK_TIM12_IRQHandler       /* 0x0EC TIM8 Break和TIM12全局中断 */
-    .word  TIM8_UP_TIM13_IRQHandler        /* 0x0F0 TIM8 Update和TIM13全局中断 */
-    .word  TIM8_TRG_COM_TIM14_IRQHandler   /* 0x0F4 TIM8 Trigger和TIM14全局中断 */
-    .word  TIM8_CC_IRQHandler              /* 0x0F8 TIM8捕获比较中断 */
-    .word  DMA1_Stream7_IRQHandler         /* 0x0FC DMA1 Stream7全局中断 */
-    .word  FMC_IRQHandler                  /* 0x100 FMC全局中断 */
-    .word  SDIO_IRQHandler                 /* 0x104 SDIO全局中断 */
-    .word  TIM5_IRQHandler                 /* 0x108 TIM5全局中断 */
-    .word  SPI3_IRQHandler                 /* 0x10C SPI3全局中断 */
-    .word  UART4_IRQHandler                /* 0x110 UART4全局中断 */
-    .word  UART5_IRQHandler                /* 0x114 UART5全局中断 */
-    .word  TIM6_DAC_IRQHandler             /* 0x118 TIM6全局和DAC1/2中断 */
-    .word  TIM7_IRQHandler                 /* 0x11C TIM7全局中断 */
-    .word  DMA2_Stream0_IRQHandler         /* 0x120 DMA2 Stream0全局中断 */
-    .word  DMA2_Stream1_IRQHandler         /* 0x124 DMA2 Stream1全局中断 */
-    .word  DMA2_Stream2_IRQHandler         /* 0x128 DMA2 Stream2全局中断 */
-    .word  DMA2_Stream3_IRQHandler         /* 0x12C DMA2 Stream3全局中断 */
-    .word  DMA2_Stream4_IRQHandler         /* 0x130 DMA2 Stream4全局中断 */
+    .word    __main_stack_top
+    .word    Reset_Handler              // Reset Handler
+    .word    NMI_Handler                // NMI Handler
+    .word    HardFault_Handler          // Hard Fault Handler
+    .word    MemManage_Handler          // MPU Fault Handler
+    .word    BusFault_Handler           // Bus Fault Handler
+    .word    UsageFault_Handler         // Usage Fault Handler
+    .word    0                          // Reserved
+    .word    0                          // Reserved
+    .word    0                          // Reserved
+    .word    0                          // Reserved
+    .word    SVC_Handler                // SVCall Handler
+    .word    DebugMon_Handler           // Debug Monitor Handler
+    .word    0                          // Reserved
+    .word    PendSV_Handler             // PendSV Handler
+    .word    SysTick_Handler            // SysTick Handler//
+    .word    WWDG_IRQHandler            // Window Watchdog
+    .word    PVD_IRQHandler             // PVD through EXTI Line detect
+    .word    TAMPER_IRQHandler          // Tamper
+    .word    RTC_IRQHandler             // RTC
+    .word    FLASH_IRQHandler           // Flash
+    .word    RCC_IRQHandler             // RCC
+    .word    EXTI0_IRQHandler           // EXTI Line 0
+    .word    EXTI1_IRQHandler           // EXTI Line 1
+    .word    EXTI2_IRQHandler           // EXTI Line 2
+    .word    EXTI3_IRQHandler           // EXTI Line 3
+    .word    EXTI4_IRQHandler           // EXTI Line 4
+    .word    DMA1_Channel1_IRQHandler   // DMA1 Channel 1
+    .word    DMA1_Channel2_IRQHandler   // DMA1 Channel 2
+    .word    DMA1_Channel3_IRQHandler   // DMA1 Channel 3
+    .word    DMA1_Channel4_IRQHandler   // DMA1 Channel 4
+    .word    DMA1_Channel5_IRQHandler   // DMA1 Channel 5
+    .word    DMA1_Channel6_IRQHandler   // DMA1 Channel 6
+    .word    DMA1_Channel7_IRQHandler   // DMA1 Channel 7
+    .word    ADC1_2_IRQHandler          // ADC1 & ADC2
+    .word    USB_HP_CAN1_TX_IRQHandler  // USB High Priority or CAN1 TX
+    .word    USB_LP_CAN1_RX0_IRQHandler // USB Low  Priority or CAN1 RX0
+    .word    CAN1_RX1_IRQHandler        // CAN1 RX1
+    .word    CAN1_SCE_IRQHandler        // CAN1 SCE
+    .word    EXTI9_5_IRQHandler         // EXTI Line 9..5
+    .word    TIM1_BRK_IRQHandler        // TIM1 Break
+    .word    TIM1_UP_IRQHandler         // TIM1 Update
+    .word    TIM1_TRG_COM_IRQHandler    // TIM1 Trigger and Commutation
+    .word    TIM1_CC_IRQHandler         // TIM1 Capture Compare
+    .word    TIM2_IRQHandler            // TIM2
+    .word    TIM3_IRQHandler            // TIM3
+    .word    TIM4_IRQHandler            // TIM4
+    .word    I2C1_EV_IRQHandler         // I2C1 Event
+    .word    I2C1_ER_IRQHandler         // I2C1 Error
+    .word    I2C2_EV_IRQHandler         // I2C2 Event
+    .word    I2C2_ER_IRQHandler         // I2C2 Error
+    .word    SPI1_IRQHandler            // SPI1
+    .word    SPI2_IRQHandler            // SPI2
+    .word    USART1_IRQHandler          // USART1
+    .word    USART2_IRQHandler          // USART2
+    .word    USART3_IRQHandler          // USART3
+    .word    EXTI15_10_IRQHandler       // EXTI Line 15..10
+    .word    RTCAlarm_IRQHandler        // RTC Alarm through EXTI Line
+    .word    USBWakeUp_IRQHandler       // USB Wakeup from suspend
+    .word    TIM8_BRK_IRQHandler        // TIM8 Break
+    .word    TIM8_UP_IRQHandler         // TIM8 Update
+    .word    TIM8_TRG_COM_IRQHandler    // TIM8 Trigger and Commutation
+    .word    TIM8_CC_IRQHandler         // TIM8 Capture Compare
+    .word    ADC3_IRQHandler            // ADC3
+    .word    FSMC_IRQHandler            // FSMC
+    .word    SDIO_IRQHandler            // SDIO
+    .word    TIM5_IRQHandler            // TIM5
+    .word    SPI3_IRQHandler            // SPI3
+    .word    UART4_IRQHandler           // UART4
+    .word    UART5_IRQHandler           // UART5
+    .word    TIM6_IRQHandler            // TIM6
+    .word    TIM7_IRQHandler            // TIM7
+    .word    DMA2_Channel1_IRQHandler   // DMA2 Channel1
+    .word    DMA2_Channel2_IRQHandler   // DMA2 Channel2
+    .word    DMA2_Channel3_IRQHandler   // DMA2 Channel3
+    .word    DMA2_Channel4_5_IRQHandler // DMA2 Channel4 & Channel5
 
 /* Reset_Handler */
 .section .text.Reset_Handler
@@ -112,8 +109,8 @@ LoopCopyDataInit:
   bcc   CopyDataInit
 
   /* 清零BSS段 */
-  ldr   r2, =_sbss
-  ldr   r4, =_ebss
+  ldr   r2, =__bss_start__
+  ldr   r4, =__bss_end__
   movs  r3, #0
   b     LoopFillZerobss
 
@@ -131,9 +128,7 @@ LoopFillZerobss:
   /* 跳转到main函数 */
   bl    main
 
-  /* 如果main函数返回，进入无限循环 */
-LoopForever:
-  b     LoopForever
+
 
 .size Reset_Handler, .-Reset_Handler
 
@@ -150,56 +145,47 @@ Infinite_Loop:
     .thumb_set \handler_name, Default_Handler
 .endm
 
-/* ========== Cortex-M4处理器异常 ========== */
-def_default_handler NMI_Handler
-def_default_handler HardFault_Handler
-def_default_handler MemManage_Handler
-def_default_handler BusFault_Handler
-def_default_handler UsageFault_Handler
-def_default_handler vPortSVCHandler
-def_default_handler DebugMon_Handler
-def_default_handler xPortPendSVHandler
-def_default_handler xPortSysTickHandler
 
-/* ========== STM32F407外部中断 (IRQ0 - IRQ81) ========== */
+def_default_handler NMI_Handler                // NMI Handler
+def_default_handler HardFault_Handler          // Hard Fault Handler
+def_default_handler MemManage_Handler          // MPU Fault Handler
+def_default_handler BusFault_Handler           // Bus Fault Handler
+def_default_handler UsageFault_Handler         // Usage Fault Handler
+def_default_handler SVC_Handler                // SVCall Handler
+def_default_handler DebugMon_Handler           // Debug Monitor Handler
+def_default_handler PendSV_Handler             // PendSV Handler
+def_default_handler SysTick_Handler            // SysTick Handler//
 
-/* 中断0-9 */
 def_default_handler WWDG_IRQHandler
 def_default_handler PVD_IRQHandler
-def_default_handler TAMP_STAMP_IRQHandler
-def_default_handler RTC_WKUP_IRQHandler
+def_default_handler TAMPER_IRQHandler
+def_default_handler RTC_IRQHandler
 def_default_handler FLASH_IRQHandler
 def_default_handler RCC_IRQHandler
 def_default_handler EXTI0_IRQHandler
 def_default_handler EXTI1_IRQHandler
 def_default_handler EXTI2_IRQHandler
 def_default_handler EXTI3_IRQHandler
-
-/* 中断10-19 */
 def_default_handler EXTI4_IRQHandler
-def_default_handler DMA1_Stream0_IRQHandler
-def_default_handler DMA1_Stream1_IRQHandler
-def_default_handler DMA1_Stream2_IRQHandler
-def_default_handler DMA1_Stream3_IRQHandler
-def_default_handler DMA1_Stream4_IRQHandler
-def_default_handler DMA1_Stream5_IRQHandler
-def_default_handler DMA1_Stream6_IRQHandler
-def_default_handler ADC_IRQHandler
-def_default_handler CAN1_TX_IRQHandler
-
-/* 中断20-29 */
-def_default_handler CAN1_RX0_IRQHandler
+def_default_handler DMA1_Channel1_IRQHandler
+def_default_handler DMA1_Channel2_IRQHandler
+def_default_handler DMA1_Channel3_IRQHandler
+def_default_handler DMA1_Channel4_IRQHandler
+def_default_handler DMA1_Channel5_IRQHandler
+def_default_handler DMA1_Channel6_IRQHandler
+def_default_handler DMA1_Channel7_IRQHandler
+def_default_handler ADC1_2_IRQHandler
+def_default_handler USB_HP_CAN1_TX_IRQHandler
+def_default_handler USB_LP_CAN1_RX0_IRQHandler
 def_default_handler CAN1_RX1_IRQHandler
 def_default_handler CAN1_SCE_IRQHandler
 def_default_handler EXTI9_5_IRQHandler
-def_default_handler TIM1_BRK_TIM9_IRQHandler
-def_default_handler TIM1_UP_TIM10_IRQHandler
-def_default_handler TIM1_TRG_COM_TIM11_IRQHandler
+def_default_handler TIM1_BRK_IRQHandler
+def_default_handler TIM1_UP_IRQHandler
+def_default_handler TIM1_TRG_COM_IRQHandler
 def_default_handler TIM1_CC_IRQHandler
-def_default_handler TIM2_IRQHandler
+@ def_default_handler TIM2_IRQHandler
 def_default_handler TIM3_IRQHandler
-
-/* 中断30-39 */
 def_default_handler TIM4_IRQHandler
 def_default_handler I2C1_EV_IRQHandler
 def_default_handler I2C1_ER_IRQHandler
@@ -210,44 +196,25 @@ def_default_handler SPI2_IRQHandler
 def_default_handler USART1_IRQHandler
 def_default_handler USART2_IRQHandler
 def_default_handler USART3_IRQHandler
-
-/* 中断40-49 */
 def_default_handler EXTI15_10_IRQHandler
-def_default_handler RTC_Alarm_IRQHandler
-def_default_handler OTG_FS_WKUP_IRQHandler
-def_default_handler TIM8_BRK_TIM12_IRQHandler
-def_default_handler TIM8_UP_TIM13_IRQHandler
-def_default_handler TIM8_TRG_COM_TIM14_IRQHandler
+def_default_handler RTCAlarm_IRQHandler
+def_default_handler USBWakeUp_IRQHandler
+def_default_handler TIM8_BRK_IRQHandler
+def_default_handler TIM8_UP_IRQHandler
+def_default_handler TIM8_TRG_COM_IRQHandler
 def_default_handler TIM8_CC_IRQHandler
-def_default_handler DMA1_Stream7_IRQHandler
-def_default_handler FMC_IRQHandler
+def_default_handler ADC3_IRQHandler
+def_default_handler FSMC_IRQHandler
 def_default_handler SDIO_IRQHandler
-
-/* 中断50-59 */
 def_default_handler TIM5_IRQHandler
 def_default_handler SPI3_IRQHandler
 def_default_handler UART4_IRQHandler
 def_default_handler UART5_IRQHandler
-def_default_handler TIM6_DAC_IRQHandler
+def_default_handler TIM6_IRQHandler
 def_default_handler TIM7_IRQHandler
-def_default_handler DMA2_Stream0_IRQHandler
-def_default_handler DMA2_Stream1_IRQHandler
-def_default_handler DMA2_Stream2_IRQHandler
-def_default_handler DMA2_Stream3_IRQHandler
-
-/* 中断60-69 */
-def_default_handler DMA2_Stream4_IRQHandler
-def_default_handler ETH_IRQHandler
-def_default_handler ETH_WKUP_IRQHandler
-def_default_handler CAN2_TX_IRQHandler
-def_default_handler CAN2_RX0_IRQHandler
-def_default_handler CAN2_RX1_IRQHandler
-def_default_handler CAN2_SCE_IRQHandler
-def_default_handler OTG_FS_IRQHandler
-def_default_handler DMA2_Stream5_IRQHandler
-def_default_handler DMA2_Stream6_IRQHandler
-
-/* 中断70-79 */
-def_default_handler DMA2_Stream7_IRQHandler
+def_default_handler DMA2_Channel1_IRQHandler
+def_default_handler DMA2_Channel2_IRQHandler
+def_default_handler DMA2_Channel3_IRQHandler
+def_default_handler DMA2_Channel4_5_IRQHandler
 
 

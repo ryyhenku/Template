@@ -59,18 +59,20 @@ SECTIONS
         _edata = .;            /* .data段在RAM中的结束地址 */
     } >RAM AT> FLASH
 
-    /* 未初始化数据(.bss) - 启动时清零 */
     .bss :
     {
         . = ALIGN(4);
-        _sbss = .;             /* .bss段起始地址 */
+        __bss_start__ = .;             /* .bss段起始地址 */
         *(.bss)
         *(.bss*)
         *(COMMON)
         . = ALIGN(4);
-        _ebss = .;             /* .bss段结束地址 */
+        __bss_end__ = .;             /* .bss段结束地址 */
         . = ALIGN(4);
         PROVIDE(end = .);      /* 定义 'end' 符号 给printf用 */
     } >RAM
 
+
+    PROVIDE(__bss_start__ = .);
+    PROVIDE(__bss_start = .);
 }

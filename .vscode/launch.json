@@ -8,8 +8,8 @@
             "interface": "jtag",
             "request": "launch",
             "type": "cortex-debug",
-            "device":"HPM6450xVMx",
-            "runToEntryPoint": "main",
+            "device":"STM32F103VC",
+            "runToEntryPoint": "Reset_Handler",
             "showDevDebugOutput": "none",
             "servertype": "external",
             "gdbTarget": "127.0.0.1:2331",
@@ -19,7 +19,8 @@
             "overrideLaunchCommands": [
                 // 加载 GDB 脚本
                 //"source C:/Users/11958/Desktop/Aether/board/HPM6450/gdb/ram.gdb",
-                "load"
+                "load",
+                "monitor reset"
             ]
             
         }

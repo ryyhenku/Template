@@ -39,7 +39,7 @@ void SPI1_Init()
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    SPI_InitStruct.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
+    SPI_InitStruct.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
     SPI_InitStruct.SPI_CPHA = SPI_CPHA_2Edge;
     SPI_InitStruct.SPI_CPOL = SPI_CPOL_High;
     SPI_InitStruct.SPI_CRCPolynomial = 7;
